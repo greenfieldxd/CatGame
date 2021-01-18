@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class MovePlatformHorizontal : MonoBehaviour
 {
-    [SerializeField] private float vectorX;
-    [SerializeField] private float vectorY;
     [SerializeField] private int speed;
-
     [SerializeField] Vector3 target;
+    
     private Vector3 defaultVector;
     private bool checkerPositions;
+    
     void Start()
     {
         checkerPositions = false;
@@ -19,7 +18,6 @@ public class MovePlatformHorizontal : MonoBehaviour
         defaultVector = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!checkerPositions)

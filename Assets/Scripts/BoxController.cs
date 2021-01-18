@@ -4,30 +4,8 @@ using UnityEngine;
 
 public class BoxController : MonoBehaviour
 {
-    private Rigidbody2D boxBody;
-    [SerializeField] private LayerMask groundLayerMask;
-
-    void Awake()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        boxBody = GetComponent<Rigidbody2D>();
-
+        if (!collision.gameObject.CompareTag("Player")) transform.SetParent(collision.transform);
     }
-    void Start()
-    {
-        Debug.Log(boxBody.transform.name);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (groundLayerMask.Equals("Ground"))
-        boxBody.transform.SetParent(collision.transform);
-    }
-
-
 }

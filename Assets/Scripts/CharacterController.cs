@@ -9,12 +9,13 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] Transform effectPosition;
     [SerializeField] GameObject effect;
-    [SerializeField] private AudioSource audio;
-
+    
+    private AudioSource audio;
     private Rigidbody2D playerBody;
     private BoxCollider2D boxCollider2d;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    
     private string sideCheck;
     private bool frictionCheck;
 
@@ -26,6 +27,7 @@ public class CharacterController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audio = GetComponent<AudioSource>();
+        
         sideCheck = "";
     }
 
@@ -40,7 +42,6 @@ public class CharacterController : MonoBehaviour
         }
 
         HandleMovement();
-
     }
 
     private bool isGrounded()
@@ -93,21 +94,21 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.friction == 0)
-        {
-            frictionCheck = false;
-        }
+        //if (collision.collider.friction == 0)
+        //{
+        //    frictionCheck = false;
+        //}
 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.friction == 0)
-        {
-            frictionCheck = true;
-        }
+        //if (collision.collider.friction == 0)
+        //{
+        //    frictionCheck = true;
+        //}
 
-        playerBody.transform.SetParent(collision.transform);
+        transform.SetParent(collision.transform);
     }
 
 }
